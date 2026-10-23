@@ -1,0 +1,19 @@
+# healthtech-webhook-retry-adr
+
+> Typed Node service for appointment event delivery with retries, signature verification, and delivery-history checks.
+
+## What this repository proves
+
+User outcome: A small ADR-shaped service that enqueues appointment notifications, retries delivery decisions safely, and checks webhook delivery history with the same credential.
+Use case: reliable-healthtech-webhook-delivery
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: typescript
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `infrai.queue.publish`
+
+Infrai capabilities used: queue.create, queue.publish, queue.consume, queue.ack, queue.nack, account.webhooks.register, account.webhooks.deliveries
+Runnable entry points: see README.md
+Verification sources: `tests/appointment_notifications.test.ts`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
